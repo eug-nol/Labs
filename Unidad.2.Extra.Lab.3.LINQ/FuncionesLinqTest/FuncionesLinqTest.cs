@@ -1,5 +1,6 @@
 using FuncionesLINQ;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Xunit;
 
@@ -12,7 +13,7 @@ namespace FuncionesLinqTest
         {
             // Arrange
             var funcionesLinq = new FuncionesLinq();
-            IEnumerable<string> provincias = new List<string>
+            ArrayList provincias = new ArrayList()
             {
                 "Buenos Aires",
                 "Capital Federal",
@@ -93,15 +94,49 @@ namespace FuncionesLinqTest
                 new Ciudad() {
                     Nombre = "San Miguel De Tucuman",
                     CodigoPostal = 4000
+                },
+                new Ciudad()
+                {
+                    Nombre = "Funes",
+                    CodigoPostal = 2132
+                },
+                new Ciudad()
+                {
+                    Nombre = "Pérez",
+                    CodigoPostal = 2121
+                },
+                new Ciudad()
+                {
+                    Nombre = "Granadero Baigorria",
+                    CodigoPostal = 2152
+                },
+                new Ciudad()
+                {
+                    Nombre = "San Nicolás",
+                    CodigoPostal = 2900
+                },
+                new Ciudad()
+                {
+                    Nombre = "Villa Constitución",
+                    CodigoPostal = 2919
+                },
+                new Ciudad()
+                {
+                    Nombre = "Pergamino",
+                    CodigoPostal = 2700
+                },
+                new Ciudad()
+                {
+                    Nombre = "Venado Tuerto",
+                    CodigoPostal = 2600
                 }
-                // Cargar 6 mas
             };
 
             // Act
             IEnumerable<int> codPostalesDeCiudadesSeleccionadas = funcionesLinq.ObtenerCodigoPostalDeCiudadesQueTenganEnSuNombreTresCarateresDeterminados(ciudades, "san");
 
             // Assert
-            Assert.Equal(expected: new List<int> { 3000, 4000 }, actual: codPostalesDeCiudadesSeleccionadas);
+            Assert.Equal(expected: new List<int> { 3000, 4000, 2900 }, actual: codPostalesDeCiudadesSeleccionadas);
         }
 
         [Fact]
